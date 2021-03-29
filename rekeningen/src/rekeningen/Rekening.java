@@ -39,5 +39,11 @@ public abstract class Rekening {
 	 * @post | getBalans() == old(getBalans()) - result
 	 */
 	public abstract int neemAf(int bedrag);
+	
+	/**
+	 * @pre | andere != null
+	 * @inspects | this, andere
+	 */
+	public abstract boolean isInDezelfdeToestandAls(Rekening andere);
 
 }

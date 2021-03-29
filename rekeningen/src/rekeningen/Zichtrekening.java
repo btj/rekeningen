@@ -41,5 +41,30 @@ public class Zichtrekening extends Rekening {
 			setBalans(getBalans() - bedrag);
 		return oudeBalans - getBalans();
 	}
+	
+	/**
+	 * @inspects | this
+	 * @post | result != null
+	 */
+	@Override
+	public String toString() {
+		return "Zichtrekening[balans=" + getBalans() + ",kredietlimiet=" + getKredietlimiet() + "]";
+	}
 
+	/**
+	 * @pre | andere != null
+	 * @inspects | this, andere
+	 * @post | result == (
+	 *       |     andere instanceof Zichtrekening &&
+	 *       |     getBalans() == ((Zichtrekening)andere).getBalans() &&
+	 *       |     getKredietlimiet() == ((Zichtrekening)andere).getKredietlimiet()
+	 *       | )
+	 */
+	@Override
+	public boolean isInDezelfdeToestandAls(Rekening andere) {
+		return andere instanceof Zichtrekening &&
+				getBalans() == ((Zichtrekening)andere).getBalans() &&
+				getKredietlimiet() == ((Zichtrekening)andere).getKredietlimiet();
+	}
+	
 }
